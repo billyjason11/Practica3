@@ -1,0 +1,17 @@
+.col-sm-5 {
+    padding-top:15%;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary.active, .btn-primary:active, .open>.dropdown-toggle.btn-primary, .btn-primary.focus, .btn-primary:focus {
+    background-color:#003673;
+    border-color:#003673;
+}
+
+.btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary:active.focus, .btn-primary:active:focus, .btn-primary:active:hover, .open>.dropdown-toggle.btn-primary.focus, .open>.dropdown-toggle.btn-primary:focus, .open>.dropdown-toggle.btn-primary:hover {
+    background-color:#003673;
+    border-color:#003673;
+}
+
+html, body {background-color: #ddd !important;}
+p {color: #808080;}
+img {box-shadow: 2px 2px 10px #666;}

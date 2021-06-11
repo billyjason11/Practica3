@@ -1,0 +1,231 @@
+<!doctype html>
+<html class="no-js" lang="en"> 
+  <head>
+  <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard &#8212; Panel de Administración</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{  asset('css/style.css')  }}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet">
+    <script src="{{  asset('js/plugins.js')  }}"></script>
+    <script   src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw=" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/scripts.js') }}"></script>
+  </head>
+  <body>
+     <div class="navbar navbar-default navbar-static-top" role="navigation">
+          <div class="container">
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="/home"><b>Exosfera Tickets</b></a>
+              </div>
+              <div class="navbar-collapse collapse">
+                  <ul class="nav navbar-nav">
+                      <li><a href="/home/profile">Mi perfil</a></li>
+                      <li><a href="/home/tickets">Mis tickets</a></li>
+                      
+                      <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configuración <b class="caret"></b></a>
+                          <ul class="dropdown-menu">
+                              <li><a href="/home/clients">Clientes</a></li><li><a href="/home/users">Usuarios</a></li>
+                          </ul>
+                      </li>
+                      <li><a href="{{ route('logout') }}  ">Salir (<b>exosfera</b>)</a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+      <div class="container">
+          <ul class="breadcrumb"><li><a href='./'>Inicio</a></li><li><a href='#'>Configuración</a></li><li><a href='profile.pl'>Perfil</a></li><li class='active'>Editar perfil</li></ul>
+<h2 class="pull-left">Editar <b>Perfil</b></h2>
+<div class="clearfix"></div>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="tabbable">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#users-gral" data-toggle="tab">Información general</a></li>
+        <li><a href="#users-pass" data-toggle="tab">Cambiar password</a></li>
+      </ul>
+      <br />
+      <div class="tab-content">
+        <div id="users-gral" class="tab-pane active">
+          <script type="text/javascript">
+function validate_users (form) {
+    var alertstr = '';
+    var invalid  = 0;
+
+
+							if(form.id_user.value == ""){
+				            	if (form.pass.value != form.pass1.value) {
+									alert("La contraseña y su confirmación deben ser iguales");
+									return false;
+						        }
+		                   }
+    // name: standard text, hidden, password, or textarea box
+    var name = form.elements['name'].value;
+    if (name == null || name === "") {
+        alertstr += '- Valor no válido para el campo "Nombre"\n';
+        invalid++;
+    }
+    // email: standard text, hidden, password, or textarea box
+    var email = form.elements['email'].value;
+    if (email != null && email != "" && ! email.match(/^[\w\-\+\._]+\@[a-zA-Z0-9][-a-zA-Z0-9\.]*\.[a-zA-Z]+$/)) {
+        alertstr += '- Valor no válido para el campo "E-Mail"\n';
+        invalid++;
+    }
+    if (invalid > 0 || alertstr != '') {
+        if (! invalid) invalid = 'The following';   // catch for programmer error
+        alert(''+invalid+' errores fueron encontrados:'+'\n\n'
+                +alertstr+'\n'+'Corrija estos errores para continuar.');
+        // reset counters
+        alertstr = '';
+        invalid  = 0;
+        return false;
+    }
+    return true;  // all checked ok
+}
+//-->
+</script>
+<!-- Generated by EXO::FormBuilder v3.0302 available from www.formbuilder.org -->
+<form action="profile.pl" class="form-horizontal" id="users" method="post" name="users" onsubmit="return validate_users(this);" role="form"><input id="_submitted_users" name="_submitted_users" type="hidden" value="1" />
+          <input id="id_user" name="id_user" type="hidden" value="1" />
+
+          
+          
+          
+	  <div class="form-group">
+	    <label for="user" class="col-sm-2 control-label">Usuario</label>
+	    <div class="col-sm-10"><input class="field_ro form-control" id="user" name="user" readonly="1" type="text" value="exosfera" /><span class="help-block">El nombre de usuario que se usa para acceder al sistema</span></div>
+	  </div>
+          
+          
+          
+	  <div class="form-group">
+	    <label for="name" class="col-sm-2 control-label"><i class="glyphicon glyphicon-star"></i> Nombre</label>
+	    <div class="col-sm-10"><input class="field_ro form-control" id="name" name="name" readonly="1" type="text" value="Billy Vargas" /><span class="help-block">El nombre completo del usuario </span></div>
+	  </div>
+          
+          
+          
+	  <div class="form-group">
+	    <label for="email" class="col-sm-2 control-label">E-Mail</label>
+	    <div class="col-sm-10"><input class="field_ro form-control" id="email" name="email" readonly="1" type="text" value="billy@exosfera.com" /><span class="help-block">Dirección de correo electrónico</span></div>
+	  </div>
+          
+          
+	  
+          <div class="clearfix"></div>
+	  <div class="row">
+            <div class="col-md-10 col-md-offset-2">
+              <input type="hidden" value="" name="_submit" />
+              <button type="submit" class="btn btn-primary" data-loading-text="Cargando..." onclick="this.form._submit.value = 'Guardar';"><i class="glyphicon glyphicon-ok"></i> Guardar</button>
+            </div>
+          </div>
+	  
+	  </form>
+	</div>
+        <div id="users-pass" class="tab-pane">
+  <script type="text/javascript">
+function validate_pass (form) {
+    var alertstr = '';
+    var invalid  = 0;
+
+
+				            if ($("#pass1").val() != $("#pass2").val()) {
+                                                 alert("La contraseña y su confirmación deben ser iguales");
+				                 return false;
+                                            }
+    // id_user: standard text, hidden, password, or textarea box
+    var id_user = form.elements['id_user'].value;
+    if (id_user != null && id_user != "" && ! id_user.match(/^-?\s*[0-9]+$/)) {
+        alertstr += '- Valor no válido para el campo "Id"\n';
+        invalid++;
+    }
+    // pass1: standard text, hidden, password, or textarea box
+    var pass1 = form.elements['pass1'].value;
+    if (pass1 == null || pass1 === "") {
+        alertstr += '- Valor no válido para el campo "Contraseña"\n';
+        invalid++;
+    }
+    // pass2: standard text, hidden, password, or textarea box
+    var pass2 = form.elements['pass2'].value;
+    if (pass2 == null || pass2 === "") {
+        alertstr += '- Valor no válido para el campo "Repetir Contraseña"\n';
+        invalid++;
+    }
+    if (invalid > 0 || alertstr != '') {
+        if (! invalid) invalid = 'The following';   // catch for programmer error
+        alert(''+invalid+' errores fueron encontrados:'+'\n\n'
+                +alertstr+'\n'+'Corrija estos errores para continuar.');
+        // reset counters
+        alertstr = '';
+        invalid  = 0;
+        return false;
+    }
+    return true;  // all checked ok
+}
+//-->
+</script>
+<!-- Generated by EXO::FormBuilder v3.0302 available from www.formbuilder.org -->
+<form action="profile.pl" class="form-horizontal" id="pass" method="post" name="pass" onsubmit="return validate_pass(this);" role="form"><input id="_submitted_pass" name="_submitted_pass" type="hidden" value="1" />
+  
+  
+  
+  
+  <div class="form-group">
+    <label for="id_user" class="col-sm-2 control-label">Id</label>
+    <div class="col-sm-10"><input class="field_ro form-control" id="id_user" name="id_user" readonly="1" size="4" type="text" value="1" /><span class="help-block">Id del usuario</span></div>
+  </div>
+  
+  
+  
+  <div class="form-group">
+    <label for="user" class="col-sm-2 control-label">Usuario</label>
+    <div class="col-sm-10"><input class="field_ro form-control" id="user" name="user" readonly="1" size="15" type="text" value="exosfera" /><span class="help-block">Nombre de usuario en el sistema</span></div>
+  </div>
+  
+  
+  
+  <div class="form-group">
+    <label for="pass1" class="col-sm-2 control-label"><i class="glyphicon glyphicon-star"></i> Contraseña</label>
+    <div class="col-sm-10"><input class="form-control" id="pass1" name="pass1" type="password" value="" /><span class="help-block">Introduce la nueva contraseña</span></div>
+  </div>
+  
+  
+  
+  <div class="form-group">
+    <label for="pass2" class="col-sm-2 control-label"><i class="glyphicon glyphicon-star"></i> Repetir Contraseña</label>
+    <div class="col-sm-10"><input class="form-control" id="pass2" name="pass2" type="password" value="" /><span class="help-block">Vuelve a introducir la nueva contraseña</span></div>
+  </div>
+  
+  
+
+  <div class="clearfix"></div>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-2">
+      <input type="hidden" value="" name="_submit" />
+      <button type="submit" class="btn btn-primary" onclick="this.form._submit.value = 'Guardar';"><i class="glyphicon glyphicon-ok"></i> Guardar</button>
+    </div>
+  </div>  
+  </form>
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+  </body>
+</html>
